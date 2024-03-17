@@ -15,7 +15,7 @@ export default function Home({navigation}) {
             return; // Exit early if fonts are not loaded yet
         }
 
-        axios.get('http://192.168.43.105:8080/test') 
+        axios.get('http://192.168.128.216:8080/test') 
           .then(response => {
               // Handle the response here
           })

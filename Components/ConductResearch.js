@@ -14,7 +14,7 @@ export default function ConductResearch({navigation}) {
         const fetchBlocks = async () => {
             try {
                 // Make an HTTP GET request to your backend API
-                const response = await axios.get('http://192.168.43.105:8080/getBlocks'); 
+                const response = await axios.get('http://192.168.128.216:8080/getBlocks'); 
                 
                 const blocks = response.data.map(block => {
                     // Parse the JSON string to convert it into an object
@@ -72,7 +72,6 @@ export default function ConductResearch({navigation}) {
                     {/* Your button content goes here */}
                     <Text style={styles.buttonText}>Start</Text>
                 </TouchableOpacity>
-
                 {/* Box with text */}
                 <View style={styles.textBox}>
                     <Text style={styles.textBoxText}>
