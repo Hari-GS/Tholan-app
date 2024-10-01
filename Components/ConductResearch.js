@@ -8,13 +8,14 @@ import { Picker } from '@react-native-picker/picker';
 export default function ConductResearch({navigation}) {
     const [selectedBlock, setSelectedBlock] = useState(null);
     const [blocks, setBlocks] = useState([]);
+    const [errorMsg, setErrorMsg]= useState(false)
     
     useEffect(() => {
         // Define an async function to fetch block names
         const fetchBlocks = async () => {
             try {
                 // Make an HTTP GET request to your backend API
-                const response = await axios.get('http://192.168.128.216:8080/getBlocks'); 
+                const response = await axios.get('http://192.168.215.216:8080/getBlocks'); 
                 
                 const blocks = response.data.map(block => {
                     // Parse the JSON string to convert it into an object
@@ -43,7 +44,14 @@ export default function ConductResearch({navigation}) {
     const handleButtonPress = () => {
         // Handle button press action here
         console.log('Button pressed');
-        navigation.navigate('Processing',{selectedBlock});
+
+        if(selectedBlock==null){
+            setErrorMsg(true)
+        }
+        if(selectedBlock!=null){
+            navigation.navigate('Processing',{selectedBlock});
+        }
+        
     };
  
  
@@ -65,7 +73,9 @@ export default function ConductResearch({navigation}) {
                     ))}
                 </Picker>
             </View>
-
+            {errorMsg && (
+            <Text style={styles.errorMessage}>Please select a block</Text>
+        )}
             {/* Big circle button and Text box */}
             <View style={styles.bottomContainer}>
                 <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
@@ -143,5 +153,8 @@ const styles = StyleSheet.create({
     textBoxText: {
         fontSize: 16,
     },
+    errorMessage:{
+        color:'red'
+    }
 });
 

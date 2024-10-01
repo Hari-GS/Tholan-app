@@ -15,13 +15,6 @@ export default function Home({navigation}) {
             return; // Exit early if fonts are not loaded yet
         }
 
-        axios.get('http://192.168.128.216:8080/test') 
-          .then(response => {
-              // Handle the response here
-          })
-          .catch(error => {
-            console.error('test error', error);
-          });
     }, [fontsLoaded]); // Make sure to include fontsLoaded in the dependency array
 
     if (!fontsLoaded) {
@@ -46,9 +39,6 @@ export default function Home({navigation}) {
             </Text>
             <TouchableOpacity style={styles.button1} onPress={pressHandler}>
                 <Text style={styles.buttonText1}>Conduct Research</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button2}>
-                <Text style={styles.buttonText2}>Saved Results</Text>
             </TouchableOpacity>
         </View>
     );

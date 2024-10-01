@@ -19,7 +19,7 @@ export default function Result({ route }) {
         // Define a function to fetch result data
         const fetchResultData = async () => {
             try {
-                const response = await axios.get(`http://192.168.128.216:8080/getRes/${selectedBlock}`); // Assuming Vallam is the default block
+                const response = await axios.get(`http://192.168.215.216:8080/getRes/${selectedBlock}`); // Assuming Vallam is the default block
                 const data = response.data;
 
                 setIrrigatedCrops(data.irrigated);
